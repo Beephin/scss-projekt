@@ -5,12 +5,9 @@ De er defineret i blokke ({}) og er normalvis lokale og kan kun tilgås inde i b
 /*Mixins*/
 /*Mixin er en måde at genbruge kode. Vi kan tage kode som bruges flere steder og samle det i en mixin*/
 /* partial fil hentes ind i style.css som et modul. fulen er enn samling af variabler, mixins og funktioner som kan genbruges*/
-* {
+body {
   box-sizing: border-box;
   margin: 0;
-}
-
-body {
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f0f0;
@@ -23,5 +20,158 @@ body p {
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
   font-weight: 600;
-  color: partials;
+  color: #333;
+}
+
+/*Skip to main content code snippet fra:https://www.a11y-collective.com/blog/skip-to-main-content/ */
+.screen-reader-text {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: black;
+  color: white;
+  opacity: 0;
+}
+
+.screen-reader-text:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(50px, auto); /* Ved at bruge minmax sikrer vi at minimumsstørrelsen af vores gridelementer og ved auto sikrer vi at boksen tilpasser sig efter indholdet */
+}
+
+/* Navigation */
+header {
+  grid-column: 1/6; /*Grid color start, kan man også skrive start og slut på en linje i stedet for 2*/
+  background-color: #ffffff;
+  border-bottom: 4px solid #388071;
+}
+
+nav {
+  height: 4em;
+  padding: 1em;
+  /*Justify og $align er parametre/variabler som kan ændres når vores mixin kaldes*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Mixin er blevet kaldt og $justify er ændret */
+}
+nav img {
+  width: 70px;
+}
+nav #bars {
+  display: none;
+}
+nav ul {
+  /*Justify og $align er parametre/variabler som kan ændres når vores mixin kaldes*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+nav a {
+  color: #333;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+nav a:hover, nav .active {
+  color: #388071;
+}
+
+/* Hero banner sektion */
+.header-img {
+  grid-column: 1/6;
+  background-image: url(../img/computer-m.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 75vh;
+  margin-bottom: 1em;
+  border-bottom: 4px solid #388071;
+}
+.header-img .banner-tekst {
+  position: absolute;
+  left: 5%;
+  top: 30%;
+}
+.header-img .banner-tekst h1 {
+  font-size: 3.5vw;
+}
+.header-img .banner-tekst p {
+  font-size: 2vw;
+}
+.header-img .banner-tekst a {
+  background-color: #388071;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  position: absolute;
+}
+.header-img .banner-tekst a:hover {
+  background-color: #133833;
+  transition: 0.3s ease-in-out;
+}
+
+/* Forside main styling */
+main {
+  grid-column: 1/6;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.cta-wrapper {
+  grid-column: 1/7;
+}
+.cta-wrapper h2 {
+  text-align: center;
+  font-size: 30px;
+}
+.cta-wrapper .cta-bokse {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*CTA Bokse*/
+.cta-1, .cta-2, .cta-3 {
+  background-color: #ffffff;
+  width: 20vw;
+  padding: 2em;
+  margin: 2em auto;
+}
+.cta-1 img, .cta-2 img, .cta-3 img {
+  margin: 0 auto;
+  width: 60%;
+  display: block;
+}
+.cta-1 p, .cta-2 p, .cta-3 p {
+  margin-bottom: 2em;
+}
+.cta-1 a, .cta-2 a, .cta-3 a {
+  background-color: #388071;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+.cta-1 a:hover, .cta-2 a:hover, .cta-3 a:hover {
+  background-color: #133833;
+  transition: 0.3s ease-in-out;
 }/*# sourceMappingURL=style.css.map */

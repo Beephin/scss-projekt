@@ -1,10 +1,5 @@
 @use 'partial'; /* partial fil hentes ind i style.css som et modul. fulen er enn samling af variabler, mixins og funktioner som kan genbruges*/
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-}
-
 body{
     box-sizing: border-box;
     margin: 0;
@@ -21,7 +16,7 @@ body{
 
     h1, h2, h3, h4, h5, h6{
         font-weight: 600;
-        color: partials.$text-color;
+        color: partial.$text-color;
     }
 
 }
@@ -95,6 +90,93 @@ body{
         color: partial.$primary-color;
     }
 
-    
-
   }
+
+/* Hero banner sektion */
+
+.header-img{
+    grid-column: 1/6;
+    background-image: url(../img/computer-m.jpg);    //          ../ for at få gå ud, og ind i en ny mappe
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 75vh;
+    margin-bottom: 1em;
+    border-bottom: 4px solid partial.$primary-color;
+
+        .banner-tekst{
+            position: absolute;
+            left: 5%;
+            top: 30%;
+
+            h1{
+                font-size: 3.5vw;
+            }
+
+            p{
+                font-size: 2vw;
+            }
+
+            a{
+                @include partial.btn;
+                position: absolute; 
+
+                &:hover{
+                    background-color: partial.$secondary-color;
+                    transition: 0.3s ease-in-out;
+                }
+            }
+
+        }
+
+}
+
+/* Forside main styling */
+
+main{
+    grid-column: 1/6;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+}
+
+.cta-wrapper{
+    grid-column: 1/7;
+    
+        h2{
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .cta-bokse{
+            display: flex;
+            justify-content: space-around;
+        }
+}
+
+/*CTA Bokse*/
+
+.cta-1, .cta-2, .cta-3{
+    @include partial.cta-box;
+
+        img{
+            margin: 0 auto;
+            width: 60%;
+            display: block;
+        }
+
+        p{
+            margin-bottom: 2em;
+        }
+
+        a{
+            @include partial.btn;
+            display: block;
+            
+             &:hover{
+                background-color: partial.$secondary-color;
+                transition: 0.3s ease-in-out;
+             }
+        }
+       
+}
